@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Anime recommender</title>
+  
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static', filename='css/coming-soon.min.css')}}" rel="stylesheet">
+<style>
+  
+  ul{
+    background: #000000;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="{{url_for('static', filename='mp4/pred.mp4')}}" type="video/mp4">
+  </video>
+
+  <div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-12 my-auto">
+          <div class="masthead-content text-white py-5 py-md-0">
+            <h1 class="mb-3">Recommended Anime</h1>
+            {% if t=='s' %}
+  <div class="shadow p-3 mb-5 bg-black rounded">
+    <h5 style="color:rgb(255,250,250)">Sorry! This anime is not in our database, which is rare</h5>
+    <h5 style="color:rgb(255,250,250)">Please check if you spelled it correctly.</h5>
+    <h5 style="color:rgb(255,250,250)">Or try with another anime.</h5>
+  </div>
+
+  {% else %}
+  <div class="shadow p-3 mb-5 bg-black rounded">
+    <h5 style="color:rgb(255,250,250)">"{{anime}}" is a great choice.</h5>
+    <h5 style="color:rgb(255,250,250)">Here are some more like this</h5>
+  </div>
+
+    
+      <ul class="list-group list-group-flush">
+      {% for m in r %}
+        <li class="list-group-item" style="color:rgb(0,0,0)"><strong>{{m|capitalize}}</strong></li>
+      {% endfor %}
+    </ul>
+  
+
+  {% endif %}
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+      
+      <li class="list-unstyled-item">
+        <a href="https://www.instagram.com/anantshahi028/">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{{url_for('static', filename='js/coming-soon.min.js')}}"></script>
+</body>
+
+</html>
